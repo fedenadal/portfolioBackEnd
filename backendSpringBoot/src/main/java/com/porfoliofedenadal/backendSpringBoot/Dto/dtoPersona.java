@@ -1,21 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.porfoliofedenadal.backendSpringBoot.Dto;
 
-package com.porfoliofedenadal.backendSpringBoot.Model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-
-
-@Entity
-public class Persona {
-    
-    @Id
-    @GeneratedValue(strategy  = GenerationType.AUTO)
-        private int id;
-    
+/**
+ *
+ * @author Fd
+ */
+public class dtoPersona {
+         
     @NotNull
     private String nombre;
     private String apellido;
@@ -26,12 +22,11 @@ public class Persona {
     private String subtitulo;
     private String descripcion;
     private String img;
-    
-    public Persona(){
-        
+
+    public dtoPersona() {
     }
 
-    public Persona(String nombre, String apellido, String ubicacion, String titulo, String subtitulo, String descripcion, String img) {
+    public dtoPersona(String nombre, String apellido, String ubicacion, String titulo, String subtitulo, String descripcion, String img) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.ubicacion = ubicacion;
@@ -39,14 +34,6 @@ public class Persona {
         this.subtitulo = subtitulo;
         this.descripcion = descripcion;
         this.img = img;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -104,7 +91,7 @@ public class Persona {
     public void setImg(String img) {
         this.img = img;
     }
-
+    
+    
     
 }
-

@@ -6,40 +6,45 @@ package com.porfoliofedenadal.backendSpringBoot.Service;
 import com.porfoliofedenadal.backendSpringBoot.Model.Persona;
 import com.porfoliofedenadal.backendSpringBoot.Repository.PersonaRepository;
 import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Transactional
 @Service
-public class PersonaService implements IPersonaService {
+public class PersonaService{
     
     @Autowired
-    public PersonaRepository persoRepo;
+    public PersonaRepository personaRepository;
 
-    @Override
-    public List<Persona> verPersonas() {
-        return persoRepo.findAll();
+   public List<Persona> list() {
+        return personaRepository.findAll();
     }
 
-    @Override
-    public void crearPersona(Persona per) {
-      persoRepo.save(per);
+    public Optional<Persona> getOne(int id) {
+        return personaRepository.findById(id);
     }
 
-    @Override
-    public void borrarPersona(long id) {
-    persoRepo.deleteById(id);
+    public Optional<Persona> getByNombre(String nombre) {
+        return personaRepository.findByNombre(nombre);
     }
 
-    @Override
-    public  Persona buscarPersona(long id) {
-    return persoRepo.findById(id).orElse(null);
+    public void save(Persona persona) {
+        personaRepository.save(persona);
+    }
+
+    public void delete(int id) {
+        personaRepository.deleteById(id);
+    }
+
+    public boolean existsById(int id) {
+        return personaRepository.existsById(id);
+    }
+
+    public boolean existsByNombre(String nombre) {
+        return personaRepository.existsByNombre(nombre);
     }
     
-    
-
-    @Override
-    public void editarPersona(Persona per) {
-  persoRepo.save(per);
-    }
     
 }
